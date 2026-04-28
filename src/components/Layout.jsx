@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import { User, RotateCw } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
@@ -15,10 +16,17 @@ export function Layout() {
   const { user } = useAuth();
   const location = useLocation();
   const pageTitle = PAGE_TITLES[location.pathname];
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024);
+
+  useEffect(() => {
+    const handleResize = () => setIsDesktop(window.innerWidth >= 1024);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <div className={styles.layout}>
-      <Sidebar />
+      {isDesktop && <Sidebar />}
       <div className={styles.wrapper}>
         <header className={styles.topHeader}>
           {location.pathname === '/' ? (
