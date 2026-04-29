@@ -1,17 +1,18 @@
 import { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { useLocation } from 'react-router-dom';
 import { noticeService } from '../services/noticeService';
 import { useAuth } from './AuthContext';
 
 const NoticeContext = createContext(null);
 
 export function NoticeProvider({ children }) {
+  const location = useLocation();
   const [adminNotices, setAdminNotices] = useState([]);
   const [userNotices, setUserNotices] = useState([]);
   const [loading, setLoading] = useState(true);
   const { user } = useAuth();
 
   const loadNotices = useCallback(async () => {
-    setUserNotices([]); // Limpa avisos anteriores
     try {
       const [adminRes, userRes] = await Promise.all([
         noticeService.getAllNotices(),
@@ -27,8 +28,10 @@ export function NoticeProvider({ children }) {
   }, []);
 
   useEffect(() => {
-    loadNotices();
-  }, [loadNotices]);
+    if (user) {
+      loadNotices();
+    }
+  }, [loadNotices, user, location.pathname]);
 
   const getActiveNotices = useCallback(() => {
     return userNotices;

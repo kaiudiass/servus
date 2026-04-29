@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { useLocation } from 'react-router-dom';
 import { scaleService } from '../services/scaleService';
 import { sectorService } from '../services/sectorService';
 import { userService } from '../services/userService';
@@ -7,6 +8,7 @@ import { useAuth } from './AuthContext';
 const ScaleContext = createContext(null);
 
 export function ScaleProvider({ children }) {
+  const location = useLocation();
   const [scales, setScales] = useState([]);
   const [upcomingScales, setUpcomingScales] = useState([]);
   const [historyScales, setHistoryScales] = useState([]);
@@ -17,8 +19,7 @@ export function ScaleProvider({ children }) {
 
   const loadInitialData = useCallback(async (isAdminUser) => {
     try {
-      setLoading(true);
-      
+      // Não resetamos o loading para true aqui para evitar flicker na navegação
       const promises = [
         scaleService.getScales(),
         sectorService.getSectors()
@@ -55,7 +56,7 @@ export function ScaleProvider({ children }) {
     } else if (!authLoading && !user) {
       setLoading(false);
     }
-  }, [loadInitialData, isAdmin, user, authLoading]);
+  }, [loadInitialData, isAdmin, user, authLoading, location.pathname]);
 
   const getScaleById = (id) => scales.find(s => s.id === id);
 
