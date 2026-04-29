@@ -46,7 +46,7 @@ export function Scales() {
     if (!selectedScale) return;
     
     const formattedDate = formatDate(selectedScale.date);
-    const message = `Olá, infelizmente não vou conseguir fazer parte dessa escala: ${selectedScale.day} - ${formattedDate} às ${selectedScale.time}`;
+    const message = `Olá, infelizmente não vou conseguir fazer parte:  ${formattedDate} às ${selectedScale.time}`;
     const whatsappUrl = `https://api.whatsapp.com/send?phone=5533998774422&text=${encodeURIComponent(message)}`;
     
     window.location.href = whatsappUrl;
