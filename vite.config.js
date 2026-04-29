@@ -4,10 +4,12 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   build: {
-    cssCodeSplit: false, // Força o CSS em um arquivo só para evitar problemas de ordem
+    target: 'es2015',
+    cssTarget: 'chrome61',
+    cssCodeSplit: false,
     rollupOptions: {
       output: {
-        manualChunks: undefined // Evita quebra de arquivos que pode causar delay de estilo
+        manualChunks: undefined
       }
     }
   }
