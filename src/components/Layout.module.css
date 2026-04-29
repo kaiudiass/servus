@@ -12,10 +12,10 @@
   min-width: 0;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
   .wrapper {
     margin-left: 240px;
-    /* Compensa a Sidebar fixa no desktop */
+    width: calc(100% - 240px);
   }
 }
 
