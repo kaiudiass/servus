@@ -3,6 +3,7 @@ import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { LogIn, Mail, Lock } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { Button } from '../components/Button';
+import logoImg from '../assets/logoget.png';
 import styles from './Login.module.css';
 
 export function Login() {
@@ -39,10 +40,7 @@ export function Login() {
   return (
     <div className={styles.container}>
       <div className={styles.logoArea}>
-        <div className={styles.logoIcon}>
-          <LogIn size={32} />
-        </div>
-        <h1 className={styles.logo}>Get Escala</h1>
+        <img src={logoImg} alt="Get Escala" className={styles.loginLogo} />
         <p className={styles.subtitle}>Gerenciamento de escalas</p>
       </div>
 

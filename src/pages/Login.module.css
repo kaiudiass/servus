@@ -9,6 +9,14 @@
   width: 100%;
 }
 
+.loginLogo {
+  height: 24px;
+  width: auto;
+  margin: 0 auto 8px;
+  display: block;
+  object-fit: contain;
+}
+
 .logoArea {
   text-align: center;
   margin-bottom: 40px;

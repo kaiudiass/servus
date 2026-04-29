@@ -3,14 +3,16 @@ import { Home, ClipboardList, User, Settings, LayoutDashboard, Users } from 'luc
 import { useAuth } from '../contexts/AuthContext';
 import styles from './Sidebar.module.css';
 
+import logoImg from '../assets/logoget.png';
+
 export function Sidebar() {
   const { isAdmin } = useAuth();
 
   return (
     <aside className={styles.sidebar}>
       <div className={styles.logo}>
-        <LayoutDashboard size={24} />
-        <span>Get Escala</span>
+        <img src={logoImg} alt="Get Escala" className={styles.logoImg} />
+        <span className={styles.logoSubtitle}>Gerenciamento de escala</span>
       </div>
       <nav className={styles.nav}>
         <NavLink to="/" className={({ isActive }) => `${styles.item} ${isActive ? styles.active : ''}`}>

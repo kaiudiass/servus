@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { User, Mail, Lock, Phone, UserPlus } from 'lucide-react';
 import { authService } from '../services/authService';
 import { Button } from '../components/Button';
+import logoImg from '../assets/logoget.png';
 import styles from './Register.module.css';
 
 export function Register() {
@@ -39,8 +40,8 @@ export function Register() {
   return (
     <div className={styles.container}>
       <div className={styles.logoArea}>
+        <img src={logoImg} alt="Get Escala" className={styles.registerLogo} />
         <h1 className={styles.logo}>Criar Conta</h1>
-        <p className={styles.subtitle}>Gerenciamento de escalas</p>
       </div>
 
       <form className={styles.form} onSubmit={handleSubmit}>
@@ -93,7 +94,7 @@ export function Register() {
           </div>
         </div>
 
-        <div className={styles.row}>
+        <div className={`${styles.row} ${styles.mobileRow}`}>
           <div className={styles.inputGroup}>
             <label className={styles.label}>Senha</label>
             <div className={styles.inputWrapper}>

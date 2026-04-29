@@ -9,15 +9,24 @@
     width: 100%;
 }
 
+.registerLogo {
+    height: 24px;
+    width: auto;
+    margin: 0 auto 8px;
+    display: block;
+    object-fit: contain;
+}
+
 .logoArea {
     text-align: center;
     margin-bottom: 32px;
 }
 
 .logo {
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 700;
     color: var(--color-text);
+    margin-top: 12px;
 }
 
 .subtitle {
@@ -98,7 +107,16 @@
 }
 
 @media (max-width: 480px) {
-    .row {
+    .row:not(.mobileRow) {
         flex-direction: column;
+    }
+    
+    .mobileRow {
+        gap: 8px;
+    }
+
+    .mobileRow .label {
+        font-size: 11px; /* Diminuir um pouco a fonte para caber melhor */
+        white-space: nowrap;
     }
 }
