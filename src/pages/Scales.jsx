@@ -86,8 +86,7 @@ export function Scales() {
           ))
         ) : (
           <div className={styles.emptyState}>
-            <Calendar size={40} />
-            <p>Nenhuma escala encontrada nesta categoria.</p>
+            <p>Nenhuma escala encontrada.</p>
           </div>
         )}
       </div>

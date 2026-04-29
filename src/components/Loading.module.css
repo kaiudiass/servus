@@ -1,0 +1,105 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  gap: 1rem;
+  width: 100%;
+}
+
+.fullScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  background-color: var(--color-bg);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  background-color: rgba(10, 10, 10, 0.7);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.spinner {
+  position: relative;
+  border-radius: 50%;
+  padding: 3px;
+  background: conic-gradient(from 0deg, transparent 20%, var(--color-primary));
+  animation: spin 1s linear infinite;
+}
+
+.inner {
+  width: 100%;
+  height: 100%;
+  background-color: inherit;
+  border-radius: 50%;
+  /* This creates the ring effect by matching the background */
+}
+
+/* Fix for the inner circle if background-color: inherit isn't enough */
+.spinner::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  background-color: var(--color-bg);
+  border-radius: 50%;
+}
+
+/* If inside an overlay, use the overlay background color for the hole */
+.overlay .spinner::after {
+  background-color: #141414; /* Surface color */
+}
+
+.small {
+  width: 24px;
+  height: 24px;
+}
+
+.medium {
+  width: 48px;
+  height: 48px;
+}
+
+.large {
+  width: 64px;
+  height: 64px;
+}
+
+.text {
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}

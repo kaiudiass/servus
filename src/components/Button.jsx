@@ -1,3 +1,4 @@
+import Loading from './Loading';
 import styles from './Button.module.css';
 
 export function Button({ children, variant = 'primary', size = 'md', fullWidth, loading, disabled, ...props }) {
@@ -7,7 +8,7 @@ export function Button({ children, variant = 'primary', size = 'md', fullWidth, 
       disabled={disabled || loading}
       {...props}
     >
-      {loading ? <span className={styles.loader} /> : children}
+      {loading ? <Loading size="small" text={null} /> : children}
     </button>
   );
 }

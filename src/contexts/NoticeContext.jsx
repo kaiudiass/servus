@@ -11,6 +11,7 @@ export function NoticeProvider({ children }) {
   const { user } = useAuth();
 
   const loadNotices = useCallback(async () => {
+    setUserNotices([]); // Limpa avisos anteriores
     try {
       const [adminRes, userRes] = await Promise.all([
         noticeService.getAllNotices(),
