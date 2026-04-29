@@ -1,26 +1,27 @@
-const CACHE_NAME = 'get-escala-v1';
-const ASSETS = [
-    '/',
-    '/index.html',
-    '/manifest.json',
-    '/src/main.jsx',
-    '/src/App.jsx',
-    '/src/App.css',
-    '/favicon.svg'
-];
+const CACHE_NAME = 'get-escala-v2';
 
 self.addEventListener('install', (event) => {
+    self.skipWaiting();
+});
+
+self.addEventListener('activate', (event) => {
     event.waitUntil(
-        caches.open(CACHE_NAME).then((cache) => {
-            return cache.addAll(ASSETS);
+        caches.keys().then((cacheNames) => {
+            return Promise.all(
+                cacheNames.map((cacheName) => {
+                    if (cacheName !== CACHE_NAME) {
+                        return caches.delete(cacheName);
+                    }
+                })
+            );
         })
     );
 });
 
 self.addEventListener('fetch', (event) => {
     event.respondWith(
-        caches.match(event.request).then((response) => {
-            return response || fetch(event.request);
+        fetch(event.request).catch(() => {
+            return caches.match(event.request);
         })
     );
 });
