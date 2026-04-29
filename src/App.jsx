@@ -12,6 +12,7 @@ import { Home } from './pages/Home';
 import { Scales } from './pages/Scales';
 import { Profile } from './pages/Profile';
 import { Admin } from './pages/Admin';
+import { SelectSectors } from './pages/SelectSectors';
 import { useAuth } from './contexts/AuthContext';
 import Loading from './components/Loading';
 import './styles/global.css';
@@ -27,6 +28,7 @@ function AppContent() {
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/registrar" element={<Register />} />
+      <Route path="/selecionar-setores" element={<ProtectedRoute><SelectSectors /></ProtectedRoute>} />
       <Route element={<Layout />}>
         <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
         <Route path="/escalas" element={<ProtectedRoute><Scales /></ProtectedRoute>} />

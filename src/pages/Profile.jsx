@@ -6,18 +6,20 @@ import { Button } from '../components/Button';
 import styles from './Profile.module.css';
 
 export function Profile() {
-  const { user, logout } = useAuth();
+  const { user, logout, refreshUser } = useAuth();
   const { sectors, updateUser } = useScale();
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
     name: user?.name || '',
     email: user?.email || '',
-    phone: user?.phone || ''
+    phone: user?.phone || '',
+    sectorIds: user?.sectors || []
   });
 
   const handleUpdate = async () => {
     const success = await updateUser(user.id, formData);
     if (success) {
+      await refreshUser();
       setIsEditing(false);
     }
   };
@@ -26,9 +28,19 @@ export function Profile() {
     setFormData({
       name: user?.name || '',
       email: user?.email || '',
-      phone: user?.phone || ''
+      phone: user?.phone || '',
+      sectorIds: user?.sectors || []
     });
     setIsEditing(false);
+  };
+
+  const toggleSector = (id) => {
+    setFormData(prev => ({
+      ...prev,
+      sectorIds: prev.sectorIds.includes(id)
+        ? prev.sectorIds.filter(sid => sid !== id)
+        : [...prev.sectorIds, id]
+    }));
   };
 
   const handleLogout = () => {
@@ -105,12 +117,25 @@ export function Profile() {
           <div className={styles.infoItem}>
             <span className={styles.infoLabel}>Setores</span>
             <div className={styles.tagList}>
-              {userSectorsNames.length > 0 ? (
-                userSectorsNames.map(name => (
-                  <span key={name} className={styles.tag}>{name}</span>
+              {isEditing ? (
+                sectors.map(sector => (
+                  <button
+                    key={sector.id}
+                    type="button"
+                    className={`${styles.tag} ${formData.sectorIds.includes(sector.id) ? styles.tagActive : ''}`}
+                    onClick={() => toggleSector(sector.id)}
+                  >
+                    {sector.name}
+                  </button>
                 ))
               ) : (
-                <span className={styles.noTags}>Nenhum setor vinculado</span>
+                userSectorsNames.length > 0 ? (
+                  userSectorsNames.map(name => (
+                    <span key={name} className={styles.tag}>{name}</span>
+                  ))
+                ) : (
+                  <span className={styles.noTags}>Nenhum setor vinculado</span>
+                )
               )}
             </div>
           </div>

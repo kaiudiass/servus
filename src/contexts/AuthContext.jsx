@@ -48,10 +48,19 @@ export function AuthProvider({ children }) {
     setUser(null);
   };
 
+  const refreshUser = async () => {
+    try {
+      const response = await authService.getMe();
+      setUser(response.data.data);
+    } catch (error) {
+      console.error('Erro ao atualizar dados do usuário', error);
+    }
+  };
+
   const isAdmin = user?.role === 'admin' || user?.role === 'master';
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, loading, isAdmin }}>
+    <AuthContext.Provider value={{ user, login, logout, loading, isAdmin, refreshUser }}>
       {children}
     </AuthContext.Provider>
   );

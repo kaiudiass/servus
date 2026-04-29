@@ -2,12 +2,14 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { User, Mail, Lock, Phone, UserPlus } from 'lucide-react';
 import { authService } from '../services/authService';
+import { useAuth } from '../contexts/AuthContext';
 import { Button } from '../components/Button';
 import logoImg from '../assets/logoget.png';
 import styles from './Register.module.css';
 
 export function Register() {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -29,7 +31,13 @@ export function Register() {
 
     try {
       await authService.register({ name, email, password, phone });
-      navigate('/login', { state: { message: 'Conta criada com sucesso!' } });
+      // Login automático após registro
+      const loginResult = await login(email, password);
+      if (loginResult.success) {
+        navigate('/selecionar-setores');
+      } else {
+        navigate('/login', { state: { message: 'Conta criada! Faça login para continuar.' } });
+      }
     } catch (err) {
       setError(err.response?.data?.message || 'Erro ao realizar cadastro');
     } finally {
