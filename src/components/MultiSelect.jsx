@@ -37,7 +37,12 @@ export function MultiSelect({ label, options, selected, onChange, placeholder })
           onClick={() => setIsOpen(!isOpen)}
         >
           <span className={styles.selectedText}>
-            {selected.length > 0 ? getSelectedNames().join(', ') : placeholder || 'Selecione...'}
+            {selected.length > 0 ? (
+              <>
+                {getSelectedNames().slice(0, 3).join(', ')}
+                {selected.length > 3 && '...'}
+              </>
+            ) : placeholder || 'Selecione...'}
           </span>
           <ChevronDown size={16} className={`${styles.chevron} ${isOpen ? styles.open : ''}`} />
         </button>

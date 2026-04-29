@@ -206,6 +206,10 @@
     padding-bottom: 120px;
   }
 
+  .content {
+    padding-bottom: 120px;
+  }
+
   .grid {
     gap: 12px;
   }
