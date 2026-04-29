@@ -43,7 +43,13 @@ export function Scales() {
   };
 
   const handleNotifyCant = () => {
-    alert('Notificação enviada aos administradores.');
+    if (!selectedScale) return;
+    
+    const formattedDate = formatDate(selectedScale.date);
+    const message = `Olá, infelizmente não vou conseguir fazer parte dessa escala: ${selectedScale.day} - ${formattedDate} às ${selectedScale.time}`;
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=5533998774422&text=${encodeURIComponent(message)}`;
+    
+    window.location.href = whatsappUrl;
     setSelectedScale(null);
   };
 
