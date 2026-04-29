@@ -146,11 +146,13 @@ export function Scales() {
               </div>
             )}
 
-            <div className={styles.detailActions}>
-              <Button variant="secondary" fullWidth onClick={handleNotifyCant}>
-                Avisar que não dá
-              </Button>
-            </div>
+            {selectedScale && view === 'upcoming' && Object.values(selectedScale.sectors).some(names => names.includes(user?.name)) && (
+              <div className={styles.detailActions}>
+                <Button variant="secondary" fullWidth onClick={handleNotifyCant}>
+                  Avisar que não dá
+                </Button>
+              </div>
+            )}
           </div>
         )}
       </Modal>
