@@ -90,7 +90,10 @@
 
 @media (max-width: 1023px) {
   .topHeader {
-    padding: calc(12px + env(safe-area-inset-top, 0px)) 16px 8px 16px;
+    padding: calc(20px + env(safe-area-inset-top, 0px)) 16px 12px 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
   }
 
   .greeting {
@@ -109,10 +112,12 @@
 
 @media (max-width: 480px) {
   .topHeader {
-    padding-top: calc(20px + env(safe-area-inset-top, 0px));
+    padding-top: calc(30px + env(safe-area-inset-top, 0px));
+    padding-left: 12px;
+    padding-right: 12px;
   }
 
   .main {
-    padding: 30px 12px 120px 12px;
+    padding: 12px 12px 120px 12px;
   }
 }
