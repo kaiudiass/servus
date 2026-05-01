@@ -210,10 +210,22 @@ export function Admin() {
     setShowEditModal(true);
   };
 
-  const handleUpdateScaleSector = async (sectorId, selectedIds) => {
+  const handleUpdateScale = async () => {
+    if (!selectedScale) return;
+    await updateScale(selectedScale.id, {
+      date: selectedScale.date,
+      day: selectedScale.day,
+      time: selectedScale.time,
+      obs: selectedScale.obs,
+      sectors: selectedScale.sectors,
+    });
+    setShowEditModal(false);
+    setSelectedScale(null);
+  };
+
+  const handleUpdateScaleSectorLocally = (sectorId, selectedIds) => {
     if (!selectedScale) return;
     const names = selectedIds.map(id => users.find(u => u.id === id)?.name).filter(Boolean);
-    await updateScaleSector(selectedScale.id, sectorId, names);
     setSelectedScale(prev => ({
       ...prev,
       sectors: { ...prev.sectors, [sectorId]: names },
@@ -1196,7 +1208,7 @@ export function Admin() {
                   <MultiSelect
                     options={getUsersBySector(sector.id)}
                     selected={getSelectedUsersBySector(sector.id, selectedScale.sectors[sector.id] || [])}
-                    onChange={(ids) => handleUpdateScaleSector(sector.id, ids)}
+                    onChange={(ids) => handleUpdateScaleSectorLocally(sector.id, ids)}
                     placeholder="Selecione..."
                   />
                 </div>
@@ -1205,6 +1217,9 @@ export function Admin() {
             <div className={styles.modalActions}>
               <Button variant="ghost" onClick={() => { setShowEditModal(false); setShowDetailModal(true); }}>
                 Voltar
+              </Button>
+              <Button onClick={handleUpdateScale}>
+                Salvar Alterações
               </Button>
             </div>
           </div>
