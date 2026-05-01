@@ -6,6 +6,7 @@ import { useNotice } from '../contexts/NoticeContext';
 import { NoticeCard } from '../components/NoticeCard';
 import { Button } from '../components/Button';
 import { Modal } from '../components/Modal';
+import { usePushNotifications } from '../hooks/usePushNotifications';
 import styles from './Home.module.css';
 
 export function Home() {
@@ -14,6 +15,8 @@ export function Home() {
   const { getActiveNotices } = useNotice();
 
   const notices = getActiveNotices(user);
+  
+  usePushNotifications();
   
   useEffect(() => {
     fetchUpcoming(true); // Simulando: GET /user/scales/upcoming?onlyMe=true
