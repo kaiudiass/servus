@@ -21,7 +21,7 @@ api.interceptors.request.use(
 api.interceptors.response.use(
     (response) => response,
     (error) => {
-        // Evita loop infinito se já estivermos na página de login
+        
         if (error.response?.status === 401 && window.location.pathname !== '/login') {
             localStorage.removeItem('token');
             window.location.href = '/login';

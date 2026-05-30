@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import { User, RotateCw } from 'lucide-react';
-import { useAuth } from '../contexts/AuthContext';
-import { Sidebar } from './Sidebar';
-import { BottomNav } from './BottomNav';
+import { useAuth } from '../../contexts/AuthContext';
+import { Sidebar } from '../Sidebar';
+import { BottomNav } from '../BottomNav';
 import styles from './Layout.module.css';
 
 const PAGE_TITLES = {

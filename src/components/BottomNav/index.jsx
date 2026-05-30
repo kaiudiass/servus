@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { Home, ClipboardList, User, Settings } from 'lucide-react';
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../../contexts/AuthContext';
 import styles from './BottomNav.module.css';
 
 export function BottomNav() {

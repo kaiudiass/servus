@@ -19,7 +19,7 @@ export function ScaleProvider({ children }) {
 
   const loadInitialData = useCallback(async (isAdminUser) => {
     try {
-      // Não resetamos o loading para true aqui para evitar flicker na navegação
+      
       const promises = [
         scaleService.getScales(),
         sectorService.getSectors()
@@ -63,7 +63,7 @@ export function ScaleProvider({ children }) {
   const getScalesByDate = (date) => scales.filter(s => s.date === date);
 
   const fetchUpcoming = async (onlyMine = false) => {
-    setUpcomingScales([]); // Limpa dados anteriores
+    setUpcomingScales([]); 
     try {
       const response = await scaleService.getUpcomingScales(onlyMine);
       setUpcomingScales(response.data.data || []);
@@ -73,7 +73,7 @@ export function ScaleProvider({ children }) {
   };
 
   const fetchHistory = async (onlyMine = false) => {
-    setHistoryScales([]); // Limpa dados anteriores
+    setHistoryScales([]); 
     try {
       const response = await scaleService.getHistoryScales(onlyMine);
       setHistoryScales(response.data.data || []);

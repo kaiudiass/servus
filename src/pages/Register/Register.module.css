@@ -10,7 +10,7 @@
 }
 
 .registerLogo {
-    height: 24px;
+    height: 64px;
     width: auto;
     margin: 0 auto 8px;
     display: block;
@@ -116,7 +116,7 @@
     }
 
     .mobileRow .label {
-        font-size: 11px; /* Diminuir um pouco a fonte para caber melhor */
+        font-size: 11px; 
         white-space: nowrap;
     }
 }

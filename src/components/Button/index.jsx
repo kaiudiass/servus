@@ -1,4 +1,4 @@
-import Loading from './Loading';
+import Loading from '../Loading';
 import styles from './Button.module.css';
 
 export function Button({ children, variant = 'primary', size = 'md', fullWidth, loading, disabled, ...props }) {

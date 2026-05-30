@@ -1,17 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Check, ArrowRight } from 'lucide-react';
-import { useScale } from '../contexts/ScaleContext';
-import { useAuth } from '../contexts/AuthContext';
-import { Button } from '../components/Button';
+import { useScale } from '../../contexts/ScaleContext';
+import { useAuth } from '../../contexts/AuthContext';
+import { Button } from '../../components/Button';
 import styles from './SelectSectors.module.css';
 
 export function SelectSectors() {
   const navigate = useNavigate();
-  const { sectors, updateUser } = useScale();
+  const { sectors, updateUser, loading: scaleLoading } = useScale();
   const { user, refreshUser } = useAuth();
   const [selectedIds, setSelectedIds] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (!scaleLoading && sectors.length === 0) {
+      navigate('/', { replace: true });
+    }
+  }, [scaleLoading, sectors.length, navigate]);
 
   const toggleSector = (id) => {
     setSelectedIds(prev => 
@@ -39,6 +45,10 @@ export function SelectSectors() {
       setLoading(false);
     }
   };
+
+  if (scaleLoading || sectors.length === 0) {
+    return null; 
+  }
 
   return (
     <div className={styles.container}>

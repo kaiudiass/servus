@@ -1,8 +1,8 @@
 import { LogOut, User, Phone, Pencil, X, Check } from 'lucide-react';
 import { useState } from 'react';
-import { useAuth } from '../contexts/AuthContext';
-import { useScale } from '../contexts/ScaleContext';
-import { Button } from '../components/Button';
+import { useAuth } from '../../contexts/AuthContext';
+import { useScale } from '../../contexts/ScaleContext';
+import { Button } from '../../components/Button';
 import styles from './Profile.module.css';
 
 export function Profile() {

@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Plus, Copy, Bell, Calendar, AlertCircle, Clock, Pencil, Trash2, Users, Eye, X, Shield, User as UserIcon, ChevronDown, Check, ArrowLeft } from 'lucide-react';
-import { useScale } from '../contexts/ScaleContext';
-import { useAuth } from '../contexts/AuthContext';
-import { useNotice } from '../contexts/NoticeContext';
-import { Button } from '../components/Button';
-import { Modal } from '../components/Modal';
-import { Input } from '../components/Input';
-import { MultiSelect } from '../components/MultiSelect';
-import { Pagination } from '../components/Pagination';
+import { useScale } from '../../contexts/ScaleContext';
+import { useAuth } from '../../contexts/AuthContext';
+import { useNotice } from '../../contexts/NoticeContext';
+import { Button } from '../../components/Button';
+import { Modal } from '../../components/Modal';
+import { Input } from '../../components/Input';
+import { MultiSelect } from '../../components/MultiSelect';
+import { Pagination } from '../../components/Pagination';
 import styles from './Admin.module.css';
 
 const CULT_DAYS = [
@@ -41,7 +41,7 @@ export function Admin() {
   const [selectedNotice, setSelectedNotice] = useState(null);
   const [selectedSector, setSelectedSector] = useState(null);
   const [tab, setTab] = useState(searchParams.get('tab') || 'escalas');
-  const [scalesSubTab, setScalesSubTab] = useState('proximas'); // proximas, historico
+  const [scalesSubTab, setScalesSubTab] = useState('proximas'); 
   const [searchTerm, setSearchTerm] = useState('');
   const [activeRoleSelect, setActiveRoleSelect] = useState(null);
   const [sectorForm, setSectorForm] = useState({ name: '', description: '' });

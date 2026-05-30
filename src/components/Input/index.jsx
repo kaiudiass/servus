@@ -14,7 +14,7 @@ export function Input({ label, error, fullWidth, className, multiline, ...props 
       };
 
       textarea.addEventListener('input', adjustHeight);
-      adjustHeight(); // Inicial
+      adjustHeight(); 
 
       return () => textarea.removeEventListener('input', adjustHeight);
     }

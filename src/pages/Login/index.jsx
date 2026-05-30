@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { LogIn, Mail, Lock } from 'lucide-react';
-import { useAuth } from '../contexts/AuthContext';
-import { Button } from '../components/Button';
-import logoImg from '../assets/logoget.png';
+import { useAuth } from '../../contexts/AuthContext';
+import { Button } from '../../components/Button';
+import logoImg from '../../assets/servusLogo.png';
 import styles from './Login.module.css';
 
 export function Login() {
@@ -40,7 +40,7 @@ export function Login() {
   return (
     <div className={styles.container}>
       <div className={styles.logoArea}>
-        <img src={logoImg} alt="Get Escala" className={styles.loginLogo} />
+        <img src={logoImg} alt="Servus" className={styles.loginLogo} />
         <p className={styles.subtitle}>Gerenciamento de escalas</p>
       </div>
 

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import api from '../services/api';
-import { useLoading } from '../contexts/LoadingContext';
+import api from '../../services/api';
+import { useLoading } from '../../contexts/LoadingContext';
 
 const AxiosInterceptor = ({ children }) => {
   const { showLoading, hideLoading } = useLoading();
@@ -8,7 +8,7 @@ const AxiosInterceptor = ({ children }) => {
   useEffect(() => {
     const requestInterceptor = api.interceptors.request.use(
       (config) => {
-        // Você pode adicionar condições aqui para não mostrar loading em certas rotas
+        
         if (config.showLoading !== false) {
           showLoading();
         }

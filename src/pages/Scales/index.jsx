@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
 import { Calendar, AlertCircle, Clock, X, Users } from 'lucide-react';
-import { useAuth } from '../contexts/AuthContext';
-import { useScale } from '../contexts/ScaleContext';
-import { ScaleCard } from '../components/ScaleCard';
-import { Modal } from '../components/Modal';
-import { Button } from '../components/Button';
-import { Pagination } from '../components/Pagination';
+import { useAuth } from '../../contexts/AuthContext';
+import { useScale } from '../../contexts/ScaleContext';
+import { ScaleCard } from '../../components/ScaleCard';
+import { Modal } from '../../components/Modal';
+import { Button } from '../../components/Button';
+import { Pagination } from '../../components/Pagination';
 import styles from './Scales.module.css';
 
 export function Scales() {
   const { upcomingScales, historyScales, fetchUpcoming, fetchHistory, sectors } = useScale();
   const { user } = useAuth();
-  const [view, setView] = useState('upcoming'); // upcoming, past
+  const [view, setView] = useState('upcoming'); 
   const [onlyMine, setOnlyMine] = useState(false);
   const [selectedScale, setSelectedScale] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);

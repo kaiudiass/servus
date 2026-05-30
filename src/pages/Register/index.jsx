@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { User, Mail, Lock, Phone, UserPlus } from 'lucide-react';
-import { authService } from '../services/authService';
-import { useAuth } from '../contexts/AuthContext';
-import { Button } from '../components/Button';
-import logoImg from '../assets/logoget.png';
+import { authService } from '../../services/authService';
+import { useAuth } from '../../contexts/AuthContext';
+import { Button } from '../../components/Button';
+import logoImg from '../../assets/servusLogo.png';
 import styles from './Register.module.css';
 
 export function Register() {
@@ -31,7 +31,7 @@ export function Register() {
 
     try {
       await authService.register({ name, email, password, phone });
-      // Login automático após registro
+      
       const loginResult = await login(email, password);
       if (loginResult.success) {
         navigate('/selecionar-setores');
@@ -48,7 +48,7 @@ export function Register() {
   return (
     <div className={styles.container}>
       <div className={styles.logoArea}>
-        <img src={logoImg} alt="Get Escala" className={styles.registerLogo} />
+        <img src={logoImg} alt="Servus" className={styles.registerLogo} />
         <h1 className={styles.logo}>Criar Conta</h1>
       </div>
 

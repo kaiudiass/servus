@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Bell, Calendar, AlertCircle, Clock, X, Users } from 'lucide-react';
-import { useAuth } from '../contexts/AuthContext';
-import { useScale } from '../contexts/ScaleContext';
-import { useNotice } from '../contexts/NoticeContext';
-import { NoticeCard } from '../components/NoticeCard';
-import { Button } from '../components/Button';
-import { Modal } from '../components/Modal';
-import { usePushNotifications } from '../hooks/usePushNotifications';
+import { useAuth } from '../../contexts/AuthContext';
+import { useScale } from '../../contexts/ScaleContext';
+import { useNotice } from '../../contexts/NoticeContext';
+import { NoticeCard } from '../../components/NoticeCard';
+import { Button } from '../../components/Button';
+import { Modal } from '../../components/Modal';
+import { usePushNotifications } from '../../hooks/usePushNotifications';
 import styles from './Home.module.css';
 
 export function Home() {
@@ -19,7 +19,7 @@ export function Home() {
   usePushNotifications();
   
   useEffect(() => {
-    fetchUpcoming(true); // Simulando: GET /user/scales/upcoming?onlyMe=true
+    fetchUpcoming(true); 
   }, []);
 
   const myScales = upcomingScales;

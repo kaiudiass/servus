@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import { Home, ClipboardList, User, Settings, LayoutDashboard, Users } from 'lucide-react';
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../../contexts/AuthContext';
 import styles from './Sidebar.module.css';
 
-import logoImg from '../assets/logoget.png';
+import logoImg from '../../assets/servusLogo.png';
 
 export function Sidebar() {
   const { isAdmin } = useAuth();
@@ -11,7 +11,7 @@ export function Sidebar() {
   return (
     <aside className={styles.sidebar}>
       <div className={styles.logo}>
-        <img src={logoImg} alt="Get Escala" className={styles.logoImg} />
+        <img src={logoImg} alt="Servus" className={styles.logoImg} />
         <span className={styles.logoSubtitle}>Gerenciamento de escala</span>
       </div>
       <nav className={styles.nav}>
