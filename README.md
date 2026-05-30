@@ -1,5 +1,7 @@
 # Servus — Front-end
 
+![Banner Servus](./src/assets/banner%20servus.png)
+
 O Servus é uma aplicação web privada desenvolvida para o gerenciamento interno de escalas de serviço em um ministério de igreja. Permite que administradores criem e gerenciem setores, organizem escalas de voluntários e enviem avisos aos membros. Membros comuns podem visualizar suas escalas, selecionar os setores em que desejam servir e receber notificações push.
 
 Este projeto não é de uso comercial. Todos os direitos são reservados ao seu criador original.
