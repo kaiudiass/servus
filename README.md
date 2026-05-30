@@ -64,6 +64,24 @@ Este projeto não é de uso comercial. Todos os direitos são reservados ao seu 
 
 ---
 
+## Instalação do Aplicativo (PWA)
+
+O Servus é um **Progressive Web App (PWA)**, o que significa que ele foi projetado para ser instalado no seu celular ou computador, funcionando como um aplicativo nativo.
+
+**Para a melhor experiência e para receber notificações Push**, é obrigatório instalar o aplicativo:
+
+### No Celular (Android/iOS)
+1. Acesse a URL da aplicação no navegador (ex: Chrome no Android, Safari no iPhone).
+2. O navegador mostrará uma opção "Adicionar à Tela Inicial" ou "Instalar Aplicativo".
+3. Confirme a instalação. O Servus agora aparecerá junto com seus outros aplicativos.
+
+### No Computador (Chrome/Edge)
+1. Acesse a URL da aplicação.
+2. Na barra de endereços (lado direito), clique no ícone de "Instalar Servus".
+3. O aplicativo será instalado e poderá ser aberto como um programa independente do navegador.
+
+---
+
 ## Variáveis de Ambiente
 
 | Variável       | Descrição                                        |
